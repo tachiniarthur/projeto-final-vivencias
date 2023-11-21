@@ -131,7 +131,7 @@ public class ProductModel {
                 updateStatement.setInt(6, id);
 
                 int rowsAffected = updateStatement.executeUpdate();
-                return rowsAffected > 0; // Retorna true se a atualização foi bem-sucedida
+                return rowsAffected > 0;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -139,7 +139,7 @@ public class ProductModel {
             e.printStackTrace();
         }
 
-        return false; // Retorna false em caso de falha
+        return false;
     }
 
 

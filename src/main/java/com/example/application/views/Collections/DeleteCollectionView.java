@@ -1,6 +1,6 @@
-package com.example.application.views.Spents;
+package com.example.application.views.Collections;
 
-import com.example.application.models.SpentModel;
+import com.example.application.models.CollectionModel;
 import com.example.application.views.Layout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -10,15 +10,15 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "delete/gasto/:id", layout = Layout.class) 
-public class DeleteSpentView extends VerticalLayout implements BeforeEnterObserver {
+public class DeleteCollectionView extends VerticalLayout implements BeforeEnterObserver {
 
     private int gastoId;
 
-    public DeleteSpentView() {
+    public DeleteCollectionView() {
         Button confirmarExclusaoButton = new Button("Confirmar Exclusão");
         confirmarExclusaoButton.addClickListener(e -> {
             excluirGanho();
-            UI.getCurrent().navigate(SpentView.class);
+            UI.getCurrent().navigate(CollectionView.class);
         });
 
         add(confirmarExclusaoButton);
@@ -35,6 +35,6 @@ public class DeleteSpentView extends VerticalLayout implements BeforeEnterObserv
     }
 
     private void excluirGanho() {
-        SpentModel.delete(gastoId);
+        CollectionModel.delete(gastoId);
     }
 }

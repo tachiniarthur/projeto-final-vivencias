@@ -1,7 +1,7 @@
 package com.example.application.views;
 
+import com.example.application.views.Collections.CollectionView;
 import com.example.application.views.Products.ProductView;
-import com.example.application.views.Spents.SpentView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
@@ -47,8 +47,8 @@ public class Layout extends AppLayout {
 
     private void createDrawer() {
         addToDrawer(new VerticalLayout( 
-                new RouterLink("Controle de Produtos", ProductView.class),
-                new RouterLink("Controle Financeiro", SpentView.class)
+                new RouterLink("Doações de Produtos", ProductView.class),
+                new RouterLink("Doações em Dinheiro", CollectionView.class)
         ));
     }
 }

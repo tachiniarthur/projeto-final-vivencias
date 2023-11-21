@@ -38,7 +38,7 @@ public class ProductController {
         return tipo_produto;
     }
 
-    public void setTipoProduto(String tipoProduto   ) {
+    public void setTipoProduto(String tipoProduto) {
         this.tipo_produto = tipoProduto;
     }
 

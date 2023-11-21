@@ -8,20 +8,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import com.example.application.controllers.SpentController;
 
-public class SpentModel {
+import com.example.application.controllers.CollectionController;
+
+public class CollectionModel {
     private static final String url = "jdbc:sqlite:database.sqlite";
 
     public static void main(String[] args) {
         try (Connection c = DriverManager.getConnection(url)) {
             String createTableSql = """
-                    CREATE TABLE IF NOT EXISTS spent (
-                        id_spent INTEGER PRIMARY KEY AUTOINCREMENT,
-                        tipo VARCHAR(250),
+                    CREATE TABLE IF NOT EXISTS collection (
+                        id_collection INTEGER PRIMARY KEY AUTOINCREMENT,
+                        valor_doado DOUBLE,
+                        forma_doacao VARCHAR(250),
                         data DATE,
-                        valor DOUBLE,
-                        formaPagamento VARCHAR(250),
+                        nome_doador VARCHAR(250),
                         id_user INTEGER,
                         FOREIGN KEY (id_user) REFERENCES user (id_user)
                     );
@@ -36,20 +37,20 @@ public class SpentModel {
         }
     }
 
-    public static SpentController getSpentById(int id) {
-        SpentController gasto = null;
+    public static CollectionController getCollectionById(int id) {
+        CollectionController arrecadacao = null;
         try (Connection c = DriverManager.getConnection(url)) {
-            String selectSql = "SELECT * FROM spent WHERE id_spent=?";
+            String selectSql = "SELECT * FROM collection WHERE id_collection=?";
             try (PreparedStatement selectStatement = c.prepareStatement(selectSql)) {
                 selectStatement.setInt(1, id);
                 ResultSet resultSet = selectStatement.executeQuery();
                 if (resultSet.next()) {
-                    Integer id_spent = resultSet.getInt("id_spent");
-                    String tipo = resultSet.getString("tipo");
+                    Integer id_collection = resultSet.getInt("id_collection");
+                    Double valor_doado = resultSet.getDouble("valor_doado");
+                    String forma_doacao = resultSet.getString("forma_doacao");
                     Date data = resultSet.getDate("data");
-                    double valor = resultSet.getDouble("valor");
-                    String formaPagamento = resultSet.getString("formaPagamento");
-                    gasto = new SpentController(id_spent, tipo, data, valor, formaPagamento);
+                    String nome_doador = resultSet.getString("nome_doador");
+                    arrecadacao = new CollectionController(id_collection, valor_doado, forma_doacao, data, nome_doador);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -57,20 +58,20 @@ public class SpentModel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return gasto;
+        return arrecadacao;
     }
 
-    public static boolean insertSpent(String tipo, Date data, Double valor, String formaPagamento, int userId) {
+    public static boolean insertCollection(Double valor_doado, String forma_doacao, Date data, String nome_doador, int userId) {
         String url = "jdbc:sqlite:database.sqlite";
    
         try (Connection c = DriverManager.getConnection(url)) {
-            String insertSql = "INSERT INTO spent (tipo, data, valor, formaPagamento, id_user) VALUES (?, ?, ?, ?, ?)";
+            String insertSql = "INSERT INTO collection (valor_doado, forma_doacao, data, nome_doador, id_user) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement insertStatement = c.prepareStatement(insertSql)) {
-                insertStatement.setString(1, tipo);
+                insertStatement.setDouble(1, valor_doado);
+                insertStatement.setString(2, forma_doacao);
                 java.sql.Date sqlDate = new java.sql.Date(data.getTime());
-                insertStatement.setDate(2, sqlDate);
-                insertStatement.setDouble(3, valor);
-                insertStatement.setString(4, formaPagamento);
+                insertStatement.setDate(3, sqlDate);
+                insertStatement.setString(5, nome_doador);
                 insertStatement.setInt(5, userId);
                 int rowsAffected = insertStatement.executeUpdate();
                 return rowsAffected > 0;
@@ -84,20 +85,20 @@ public class SpentModel {
         return false;
     }
 
-    public static List<SpentController> getAll(int id_user) {
-        List<SpentController> gastos = new ArrayList<>();
+    public static List<CollectionController> getAll(int id_user) {
+        List<CollectionController> arrecadacoes = new ArrayList<>();
         try (Connection c = DriverManager.getConnection(url)) {
-            String selectSql = "SELECT * FROM spent WHERE id_user=?";
+            String selectSql = "SELECT * FROM collection WHERE id_user=?";
             try (PreparedStatement selectStatement = c.prepareStatement(selectSql)) {
-                selectStatement.setInt(1, id_user);  // set the parameter
+                selectStatement.setInt(1, id_user);
                 ResultSet resultSet = selectStatement.executeQuery();
                 while (resultSet.next()) {
-                    Integer id_spent = resultSet.getInt("id_spent");
-                    String tipo = resultSet.getString("tipo");
+                    Integer id_collection = resultSet.getInt("id_collection");
+                    double valor_doado = resultSet.getDouble("valor_doado");
+                    String forma_doacao = resultSet.getString("forma_doacao");
                     Date data = resultSet.getDate("data");
-                    double valor = resultSet.getDouble("valor");
-                    String formaPagamento = resultSet.getString("formaPagamento");
-                    gastos.add(new SpentController(id_spent, tipo, data, valor, formaPagamento));
+                    String nome_doador = resultSet.getString("nome_doador");
+                    arrecadacoes.add(new CollectionController(id_collection, valor_doado, forma_doacao, data, nome_doador));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -105,30 +106,36 @@ public class SpentModel {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return gastos;
+        return arrecadacoes;
     }
 
-    public static void update(int id, SpentController novoGasto) {
+     public static boolean update(int id, CollectionController arrecadacao) {
+        String url = "jdbc:sqlite:database.sqlite";
+
         try (Connection c = DriverManager.getConnection(url)) {
-            String updateSql = "UPDATE spent SET tipo=?, data=?, valor=?, formaPagamento=? WHERE id_spent=?";
+            String updateSql = "UPDATE collection SET valor_doado=?, forma_doacao=?, data=?, nome_doador=? WHERE id_collection=?";
             try (PreparedStatement updateStatement = c.prepareStatement(updateSql)) {
-                updateStatement.setString(1, novoGasto.getTipo());
-                updateStatement.setDate(2, new java.sql.Date(novoGasto.getData().getTime()));
-                updateStatement.setDouble(3, novoGasto.getValor());
-                updateStatement.setString(4, novoGasto.getFormaPagamento());
-                updateStatement.setInt(5, id);
-                updateStatement.executeUpdate();
+                updateStatement.setDouble(1, arrecadacao.getValorDoado());
+                updateStatement.setString(3, arrecadacao.getFormaDoacao());
+                updateStatement.setDate(2, new java.sql.Date(arrecadacao.getData().getTime()));
+                updateStatement.setString(4, arrecadacao.getNomeDoador());
+                updateStatement.setInt(6, id);
+
+                int rowsAffected = updateStatement.executeUpdate();
+                return rowsAffected > 0;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return false;
     }
 
     public static void delete(int id) {
         try (Connection c = DriverManager.getConnection(url)) {
-            String deleteSql = "DELETE FROM spent WHERE id_spent=?";
+            String deleteSql = "DELETE FROM collection WHERE id_collection=?";
             try (PreparedStatement deleteStatement = c.prepareStatement(deleteSql)) {
                 deleteStatement.setInt(1, id);
                 deleteStatement.executeUpdate();

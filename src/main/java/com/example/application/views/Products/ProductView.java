@@ -55,7 +55,6 @@ public class ProductView extends VerticalLayout {
 
     private void listarProdutos() {
         Integer userId = UserController.getId();
-        System.out.println(userId);
         produtoGrid.setItems(ProductModel.getAll(userId));
     }
 }

@@ -23,7 +23,7 @@ import com.vaadin.flow.router.Route;
 @Route(value = "criar/produto", layout = Layout.class)
 public class CreateProductView extends VerticalLayout {
 
-        private final H1 title = new H1("Criar novo Produto");
+        private final H1 title = new H1("Cadastrar novo Produto");
         private final TextField produtoNomeField = new TextField("Nome do Produto");
         private final ComboBox<String> produtoTipoField = new ComboBox<>("Tipo do Produto");
         private final IntegerField produtoQuantidadeField = new IntegerField("Quantidade de Produtos");
