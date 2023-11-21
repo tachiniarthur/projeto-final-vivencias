@@ -17,12 +17,12 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route("")
-@PageTitle("Los Financeros Hermanos - Login")
+@PageTitle("Semente Solidária - Login")
 public class LoginView extends VerticalLayout {
 
-    private final H1 title = new H1("Los Financeros Hermanos");
-    private final TextField usernameField = new TextField("Username do usuário");
-    private final PasswordField passwordField = new PasswordField("Senha do usuário");
+    private final H1 title = new H1("Semente Solidária");
+    private final TextField usernameField = new TextField("Username");
+    private final PasswordField passwordField = new PasswordField("Senha");
     private final H2 textQuestionCreateAccount = new H2("Ainda não possui uma conta?");
 
     private final Binder<UserController> binder = new Binder<>(UserController.class);
@@ -32,7 +32,7 @@ public class LoginView extends VerticalLayout {
         setJustifyContentMode(JustifyContentMode.CENTER);
         setAlignItems(Alignment.CENTER);
 
-        title.getStyle().set("font-size", "32px");
+        title.getStyle().set("font-size", "44px");
 
         textQuestionCreateAccount.getStyle().set("font-size", "16px");
         textQuestionCreateAccount.getStyle().set("padding-top", "12px");
@@ -42,6 +42,7 @@ public class LoginView extends VerticalLayout {
         passwordField.setWidth("300px");
 
         usernameField.getStyle().set("margin", "0px");
+        usernameField.getStyle().set("margin-top", "32px");
         passwordField.getStyle().set("margin", "0px");
 
         usernameField.getStyle().set("padding", "0px");

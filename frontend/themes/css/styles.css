@@ -4,37 +4,37 @@ vaadin-login-form-wrapper{
 }
 
 body{
-    background-color: #11111F;
-    --lumo-primary-color: #4EC3E0;
-    --lumo-primary-text-color: #4EC3E0;
-    --lumo-header-text-color: #4EC3E0;
+    background-color: #ffffff;
+    --lumo-primary-color: #000000;
+    --lumo-primary-text-color: #000000;
+    --lumo-header-text-color: #000000;
 }
 
 vaadin-app-layout::part(drawer) {
-    background-color: #11111F !important;
+    background-color: #ffffff !important;
     border-right: #fff 1px solid;
-  }
+}
 
-  vaadin-app-layout::part(navbar) {
-    background-color: #11111F !important;
-    color: #4EC3E0;
-  }
+vaadin-app-layout::part(navbar) {
+    background-color: #ffffff !important;
+    color: #000000;
+}
 
 vaadin-grid::part(cell) {
-    background-color: #11111F !important;
-    color: #4EC3E0;
+    background-color: #ffffff !important;
+    color: #000000;
 }
 
 vaadin-grid {
-    background-color: #11111F !important;
+    background-color: #ffffff !important;
 }
 
 label {
-    color: #4EC3E0;
+    color: #000000;
 }
 
 input {
-    color: #fff;
+    color: #000000;
 }
 
 .field-error {

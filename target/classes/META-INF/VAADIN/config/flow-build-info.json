@@ -1,0 +1,16 @@
+{
+  "productionMode": false,
+  "eagerServerLoad": false,
+  "npmFolder": "/workspaces/projeto-final-vivencias",
+  "node.version": "v18.17.1",
+  "node.download.root": "https://nodejs.org/dist/",
+  "frontendFolder": "/workspaces/projeto-final-vivencias/frontend",
+  "connect.javaSourceFolder": "/workspaces/projeto-final-vivencias/src/main/java",
+  "javaResourceFolder": "/workspaces/projeto-final-vivencias/src/main/resources",
+  "connect.applicationProperties": "/workspaces/projeto-final-vivencias/src/main/resources/application.properties",
+  "connect.openApiFile": "/workspaces/projeto-final-vivencias/target/generated-resources/openapi.json",
+  "project.frontend.generated": "/workspaces/projeto-final-vivencias/frontend/generated",
+  "pnpm.enable": false,
+  "require.home.node": false,
+  "build.folder": "target"
+}

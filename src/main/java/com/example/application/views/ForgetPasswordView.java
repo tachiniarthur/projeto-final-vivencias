@@ -19,7 +19,7 @@ import com.vaadin.flow.router.Route;
 
 
 @Route("redefinir-senha")
-@PageTitle("Los Financeros Hermanos - Redefinir senha")
+@PageTitle("Semente Solidária - Redefinir senha")
 public class ForgetPasswordView extends VerticalLayout {
 
     private final H1 title = new H1("Trocar senha do usuário");

@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "/workspaces/projeto-final-vivencias/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "/workspaces/projeto-final-vivencias/frontend/generated/jar-resources",
+  "staticOutput": "/workspaces/projeto-final-vivencias/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "/workspaces/projeto-final-vivencias/target/classes/META-INF/VAADIN/config",
+  "frontendBundleOutput": "/workspaces/projeto-final-vivencias/target/classes/META-INF/VAADIN/webapp",
+  "devBundleOutput": "/workspaces/projeto-final-vivencias/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "/workspaces/projeto-final-vivencias/src/main/dev-bundle/config",
+  "jarResourcesFolder": "/workspaces/projeto-final-vivencias/frontend/generated/jar-resources",
+  "themeName": "css",
+  "clientServiceWorkerSource": "/workspaces/projeto-final-vivencias/target/sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}

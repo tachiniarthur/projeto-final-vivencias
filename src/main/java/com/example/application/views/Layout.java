@@ -1,6 +1,6 @@
 package com.example.application.views;
 
-import com.example.application.views.Gains.GainView;
+import com.example.application.views.Products.ProductView;
 import com.example.application.views.Spents.SpentView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -19,7 +19,7 @@ public class Layout extends AppLayout {
     }
 
     private void createHeader() {
-        H1 logo = new H1("Los Financeros Hermanos");
+        H1 logo = new H1("Semente Solidária");
         logo.addClassNames(
             LumoUtility.FontSize.LARGE, 
             LumoUtility.Margin.MEDIUM);
@@ -47,8 +47,8 @@ public class Layout extends AppLayout {
 
     private void createDrawer() {
         addToDrawer(new VerticalLayout( 
-                new RouterLink("Ganhos", GainView.class),
-                new RouterLink("Gastos", SpentView.class)
+                new RouterLink("Controle de Produtos", ProductView.class),
+                new RouterLink("Controle Financeiro", SpentView.class)
         ));
     }
 }

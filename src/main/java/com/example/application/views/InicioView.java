@@ -5,7 +5,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "inicio", layout = Layout.class) 
-@PageTitle("Los Financeros Hermanos - Início")
+@PageTitle("Semente Solidária - Início")
 public class InicioView extends VerticalLayout {
     
 }

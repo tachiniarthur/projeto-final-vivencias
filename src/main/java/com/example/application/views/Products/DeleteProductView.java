@@ -1,6 +1,6 @@
-package com.example.application.views.Gains;
+package com.example.application.views.Products;
 
-import com.example.application.models.GainModel;
+import com.example.application.models.ProductModel;
 import com.example.application.views.Layout;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -9,16 +9,16 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "delete/ganho/:id", layout = Layout.class) 
-public class DeleteGainView extends VerticalLayout implements BeforeEnterObserver {
+@Route(value = "deletar/produto/:id", layout = Layout.class) 
+public class DeleteProductView extends VerticalLayout implements BeforeEnterObserver {
 
-    private int ganhoId;
+    private int produtoId;
 
-    public DeleteGainView() {
+    public DeleteProductView() {
         Button confirmarExclusaoButton = new Button("Confirmar Exclusão");
         confirmarExclusaoButton.addClickListener(e -> {
-            excluirGanho();
-            UI.getCurrent().navigate(GainView.class);
+            excluirProduto();
+            UI.getCurrent().navigate(ProductView.class);
         });
 
         add(confirmarExclusaoButton);
@@ -28,13 +28,13 @@ public class DeleteGainView extends VerticalLayout implements BeforeEnterObserve
     public void beforeEnter(BeforeEnterEvent event) {
         String idParameter = event.getRouteParameters().get("id").orElse("");
         try {
-            ganhoId = Integer.parseInt(idParameter);
+            produtoId = Integer.parseInt(idParameter);
         } catch (NumberFormatException e) {
-            System.out.println("Erro ao deletar ganho");
+            System.out.println("Erro ao deletar produto");
         }
     }
 
-    private void excluirGanho() {
-        GainModel.delete(ganhoId);
+    private void excluirProduto() {
+        ProductModel.delete(produtoId);
     }
 }

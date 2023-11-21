@@ -2,7 +2,6 @@ package com.example.application.views.Spents;
 
 import java.sql.Date;
 
-import com.example.application.controllers.GainController;
 import com.example.application.controllers.SpentController;
 import com.example.application.models.SpentModel;
 import com.example.application.views.Layout;

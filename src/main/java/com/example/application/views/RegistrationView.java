@@ -18,7 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
 @Route("registrar-se")
-@PageTitle("Los Financeros Hermanos - Redefinir senha")
+@PageTitle("Semente Solidária - Redefinir senha")
 public class RegistrationView extends VerticalLayout {
 
         private final H1 title = new H1("Criar nova conta de usuário");
