@@ -94,6 +94,7 @@ public class CreateCollectionView extends VerticalLayout {
                     String formaDoacao = arrecadacaoFormaDoacaoField.getValue();
                     java.sql.Date data = new java.sql.Date(arrecadacaoDataPicker.getValue().atStartOfDay().toInstant(java.time.ZoneOffset.UTC).toEpochMilli());
                     String nomeDoador = arrecadacaoNomeDoadorField.getValue();
+                    System.err.println(nomeDoador);
 
                     int userId = UserController.getId();
                     boolean insertCollection = CollectionModel.insertCollection(valorDoado, formaDoacao, data, nomeDoador, userId);

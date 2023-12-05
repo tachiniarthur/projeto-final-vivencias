@@ -23,32 +23,36 @@ public class Layout extends AppLayout {
         logo.addClassNames(
             LumoUtility.FontSize.LARGE, 
             LumoUtility.Margin.MEDIUM);
-
+    
         HorizontalLayout logout = new HorizontalLayout(
             new RouterLink("Logout", LoginView.class)
         );
         
+        logout.addClassNames("logout-style");
         logout.addClassNames(
             LumoUtility.Padding.Vertical.NONE,
             LumoUtility.Padding.Horizontal.MEDIUM);
 
-
-        var header = new HorizontalLayout(new DrawerToggle(), logo ); 
-
-        header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER); 
+        var header = new HorizontalLayout(new DrawerToggle(), logo); 
+    
+        header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
         header.setWidthFull();
-        header.addClassNames(
-            LumoUtility.Padding.Vertical.NONE,
-            LumoUtility.Padding.Horizontal.MEDIUM);
-
-        addToNavbar(header, logout); 
-
-    }
+        header.addClassName("header-style");
+    
+        addToNavbar(header, logout);
+    }    
 
     private void createDrawer() {
-        addToDrawer(new VerticalLayout( 
-                new RouterLink("Doações de Produtos", ProductView.class),
-                new RouterLink("Doações em Dinheiro", CollectionView.class)
-        ));
+        VerticalLayout drawerLayout = new VerticalLayout(
+            new RouterLink("Doações de Produtos", ProductView.class),
+            new RouterLink("Doações em Dinheiro", CollectionView.class)
+        );
+
+        drawerLayout.addClassName("drawer-style");
+    
+        drawerLayout.setSizeFull();
+    
+        addToDrawer(drawerLayout);
     }
+
 }

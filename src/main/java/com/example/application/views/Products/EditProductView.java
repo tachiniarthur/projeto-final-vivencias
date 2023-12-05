@@ -3,7 +3,6 @@ package com.example.application.views.Products;
 import java.sql.Date;
 
 import com.example.application.controllers.ProductController;
-import com.example.application.controllers.UserController;
 import com.example.application.models.ProductModel;
 import com.example.application.views.Layout;
 import com.vaadin.flow.component.UI;

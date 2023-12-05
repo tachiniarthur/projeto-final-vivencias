@@ -9,15 +9,15 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "delete/gasto/:id", layout = Layout.class) 
+@Route(value = "deletar/arrecadacao/:id", layout = Layout.class) 
 public class DeleteCollectionView extends VerticalLayout implements BeforeEnterObserver {
 
-    private int gastoId;
+    private int arrecadacaoId;
 
     public DeleteCollectionView() {
         Button confirmarExclusaoButton = new Button("Confirmar Exclusão");
         confirmarExclusaoButton.addClickListener(e -> {
-            excluirGanho();
+            excluirCollection();
             UI.getCurrent().navigate(CollectionView.class);
         });
 
@@ -28,13 +28,13 @@ public class DeleteCollectionView extends VerticalLayout implements BeforeEnterO
     public void beforeEnter(BeforeEnterEvent event) {
         String idParameter = event.getRouteParameters().get("id").orElse("");
         try {
-            gastoId = Integer.parseInt(idParameter);
+            arrecadacaoId = Integer.parseInt(idParameter);
         } catch (NumberFormatException e) {
-            System.out.println("Erro ao deletar gasto!");
+            System.out.println("Erro ao deletar doação!");
         }
     }
 
-    private void excluirGanho() {
-        CollectionModel.delete(gastoId);
+    private void excluirCollection() {
+        CollectionModel.delete(arrecadacaoId);
     }
 }

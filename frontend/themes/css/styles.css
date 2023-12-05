@@ -3,7 +3,7 @@ vaadin-login-form-wrapper{
     background-color: #fff !important;
 }
 
-body{
+body {
     background-color: #ffffff;
     --lumo-primary-color: #000000;
     --lumo-primary-text-color: #000000;
@@ -49,4 +49,9 @@ input {
     background-color: transparent;
     border: none;
     outline: none;
+}
+
+.drawer-style {
+    border-right: 1px solid black !important;
+    background-color: #fff !important;
 }

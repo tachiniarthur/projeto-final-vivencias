@@ -61,7 +61,7 @@ public class CollectionModel {
         return arrecadacao;
     }
 
-    public static boolean insertCollection(Double valor_doado, String forma_doacao, Date data, String nome_doador, int userId) {
+    public static boolean insertCollection(Double valor_doado, String forma_doacao, Date data, String nomeDoador, int userId) {
         String url = "jdbc:sqlite:database.sqlite";
    
         try (Connection c = DriverManager.getConnection(url)) {
@@ -71,7 +71,7 @@ public class CollectionModel {
                 insertStatement.setString(2, forma_doacao);
                 java.sql.Date sqlDate = new java.sql.Date(data.getTime());
                 insertStatement.setDate(3, sqlDate);
-                insertStatement.setString(5, nome_doador);
+                insertStatement.setString(4, nomeDoador);
                 insertStatement.setInt(5, userId);
                 int rowsAffected = insertStatement.executeUpdate();
                 return rowsAffected > 0;
@@ -109,17 +109,17 @@ public class CollectionModel {
         return arrecadacoes;
     }
 
-     public static boolean update(int id, CollectionController arrecadacao) {
+    public static boolean update(int id, CollectionController arrecadacao) {
         String url = "jdbc:sqlite:database.sqlite";
 
         try (Connection c = DriverManager.getConnection(url)) {
             String updateSql = "UPDATE collection SET valor_doado=?, forma_doacao=?, data=?, nome_doador=? WHERE id_collection=?";
             try (PreparedStatement updateStatement = c.prepareStatement(updateSql)) {
                 updateStatement.setDouble(1, arrecadacao.getValorDoado());
-                updateStatement.setString(3, arrecadacao.getFormaDoacao());
-                updateStatement.setDate(2, new java.sql.Date(arrecadacao.getData().getTime()));
+                updateStatement.setString(2, arrecadacao.getFormaDoacao());
+                updateStatement.setDate(3, new java.sql.Date(arrecadacao.getData().getTime()));                
                 updateStatement.setString(4, arrecadacao.getNomeDoador());
-                updateStatement.setInt(6, id);
+                updateStatement.setInt(5, id);
 
                 int rowsAffected = updateStatement.executeUpdate();
                 return rowsAffected > 0;

@@ -3,9 +3,7 @@ package com.example.application.views.Collections;
 import java.sql.Date;
 
 import com.example.application.controllers.CollectionController;
-import com.example.application.controllers.ProductController;
 import com.example.application.models.CollectionModel;
-import com.example.application.models.ProductModel;
 import com.example.application.views.Layout;
 import com.example.application.views.Products.ProductView;
 import com.vaadin.flow.component.UI;
@@ -26,7 +24,7 @@ import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
 
-@Route(value = "edit/gasto/:id", layout = Layout.class)
+@Route(value = "editar/arrecadacao/:id", layout = Layout.class)
 public class EditCollectionView extends VerticalLayout implements BeforeEnterObserver  {
 
         private int arrecadacaoId;
@@ -47,7 +45,7 @@ public class EditCollectionView extends VerticalLayout implements BeforeEnterObs
                 title.getStyle().set("font-size", "32px");
                 arrecadacaoValorDoadoField.setWidth("300px");
                 arrecadacaoFormaDoacaoField.setWidth("300px");
-                arrecadacaoFormaDoacaoField.setItems("Brinquedo", "Equipamentos eletrônicos", "Equipamentos esportivos", "Higiene", "Livros", "Material escolar", "Móveis", "Produtos para bebês", "Roupas e calçados");
+                arrecadacaoFormaDoacaoField.setItems("Cartão de crédito", "Cartão de débito", "Pix", "Dinheiro");
                 arrecadacaoDataPicker.setWidth("300px");
                 arrecadacaoNomeDoadorField.setWidth("300px");
 
@@ -111,9 +109,8 @@ public class EditCollectionView extends VerticalLayout implements BeforeEnterObs
                         boolean updateCollection = CollectionModel.update(arrecadacaoId, arrecadacao);
                         UI.getCurrent().navigate(ProductView.class);
 
-
                         if (updateCollection) {
-                                UI.getCurrent().navigate(ProductView.class);
+                                UI.getCurrent().navigate(CollectionView.class);
                         } else {
                                 Notification.show("Erro ao editar a arrecadação. Tente novamente.", 5000, Notification.Position.BOTTOM_START);
                         }
