@@ -40,7 +40,7 @@ public class CreateProductView extends VerticalLayout {
                 title.getStyle().set("font-size", "32px");
                 produtoNomeField.setWidth("300px");
                 produtoTipoField.setWidth("300px");
-                produtoTipoField.setItems("Brinquedo", "Equipamentos eletrônicos", "Equipamentos esportivos", "Higiene", "Livros", "Material escolar", "Móveis", "Produtos para bebês", "Roupas e calçados");
+                produtoTipoField.setItems("Alimento", "Brinquedo", "Equipamentos eletrônicos", "Equipamentos esportivos", "Higiene", "Livros", "Material escolar", "Móveis", "Produtos para bebês", "Roupas e calçados");
                 produtoQuantidadeField.setWidth("300px");
                 produtoDataPicker.setWidth("300px");
                 produtoNomeDoadorField.setWidth("300px");

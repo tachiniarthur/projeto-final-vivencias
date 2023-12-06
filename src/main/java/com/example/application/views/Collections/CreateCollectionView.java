@@ -65,12 +65,6 @@ public class CreateCollectionView extends VerticalLayout {
             .asRequired("Por favor, preencha a data")
             .withConverter(new LocalDateToDateConverter())
             .bind(CollectionController::getData, CollectionController::setData);
-
-        binder.forField(arrecadacaoNomeDoadorField)
-            .asRequired("Por favor, preencha o valor doado")
-            .withValidator(new StringLengthValidator(
-                    "O nome do doador deve ter pelo menos 3 caracteres", 3, null))
-            .bind(CollectionController::getNomeDoador, CollectionController::setNomeDoador);
            
         CollectionController collectionController = new CollectionController();
         binder.setBean(collectionController);
